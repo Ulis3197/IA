@@ -73,6 +73,141 @@ Pensar en la IA a gran escala plantea preguntas importantes sobre cómo cambiar�
 # Introducción a la Inteligencia Artificial: Introspección
 ## Hacer un programa que pueda contar el numero de elementos que son del mismo color.
 
+### Iteraitivo
+
+```python
+matriz_ejemplo = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 3, 0, 5, 0],
+    [0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 3, 0, 5, 0],
+    [0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 3, 0, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0],
+    [0, 0, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+]
+
+def contar_islas_iterativo(matriz):
+    if not matriz or not matriz[0]:
+        return 0
+
+    filas, columnas = len(matriz), len(matriz[0])
+    visitado = [[False] * columnas for _ in range(filas)]
+    islas = 0
+
+    for i in range(filas):
+        for j in range(columnas):
+            if not visitado[i][j] and matriz[i][j] != 0:
+                color = matriz[i][j]
+                items_contados = [0]
+                pila = [(i, j)]
+                while pila:
+                    i_actual, j_actual = pila.pop()
+                    if (
+                        0 <= i_actual < filas
+                        and 0 <= j_actual < columnas
+                        and matriz[i_actual][j_actual] == color
+                        and not visitado[i_actual][j_actual]
+                    ):
+                        visitado[i_actual][j_actual] = True
+                        items_contados[0] += 1
+                        pila.extend(
+                            [
+                                (i_actual + 1, j_actual),
+                                (i_actual - 1, j_actual),
+                                (i_actual, j_actual + 1),
+                                (i_actual, j_actual - 1),
+                            ]
+                        )
+
+                if items_contados[0] > 5:
+                    islas += 1
+
+    return islas
+
+resultado_iterativo = contar_islas_iterativo(matriz_ejemplo)
+print(f"El número de islas (método iterativo) es: {resultado_iterativo}")
+```
+
+### Recursivo
+
+```python
+matriz_ejemplo = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0],
+    [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 3, 0, 5, 0],
+    [0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 3, 0, 5, 0],
+    [0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 3, 0, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0],
+    [0, 0, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+]
+
+def contar_islas_recursivo(matriz):
+    if not matriz or not matriz[0]:
+        return 0
+
+    filas, columnas = len(matriz), len(matriz[0])
+    visitado = [[False] * columnas for _ in range(filas)]
+    islas = 0
+
+    def explorar_isla(i, j, color, items_contados):
+        if (
+            0 <= i < filas
+            and 0 <= j < columnas
+            and matriz[i][j] == color
+            and not visitado[i][j]
+        ):
+            visitado[i][j] = True
+            items_contados[0] += 1
+            explorar_isla(i + 1, j, color, items_contados)
+            explorar_isla(i - 1, j, color, items_contados)
+            explorar_isla(i, j + 1, color, items_contados)
+            explorar_isla(i, j - 1, color, items_contados)
+
+    for i in range(filas):
+        for j in range(columnas):
+            if not visitado[i][j] and matriz[i][j] != 0:
+                color = matriz[i][j]
+                items_contados = [0]
+                explorar_isla(i, j, color, items_contados)
+                if items_contados[0] > 5:
+                    islas += 1
+
+    return islas
+
+resultado_recursivo = contar_islas_recursivo(matriz_ejemplo)
+print(f"El número de islas (método recursivo) es: {resultado_recursivo}")
+```
+
 # Introducción a la Inteligencia Artificial: Introspección
 ## Una vez que se resolvió el algoritmo de las islas en la siguiente imagen contar los elementos que tienen el color rojo
 
