@@ -211,8 +211,92 @@ print(f"El número de islas (método recursivo) es: {resultado_recursivo}")
 # Introducción a la Inteligencia Artificial: Introspección
 ## Una vez que se resolvió el algoritmo de las islas en la siguiente imagen contar los elementos que tienen el color rojo
 
+```python
+
+import cv2 as cv
+
+img = cv.imread('./frutas.jpg',1)
+img2 = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+img3 = cv.cvtColor(img2, cv.COLOR_RGB2HSV)
+
+umbralBajo = (0, 130, 130)
+umbralAlto = (5, 255, 255)
+
+umbralBajoB = (175, 130, 130)
+umbralAltoB = (180, 255, 255)
+
+mascara1 = cv.inRange(img3, umbralBajo, umbralAlto)
+mascara2 = cv.inRange(img3, umbralBajoB, umbralAltoB)
+
+mascara= mascara1+mascara2
+
+resultado = cv.bitwise_and(img, img, mask=mascara)
+
+w= mascara.shape[0]
+h= mascara.shape[1]
+
+def contar_islas_recursivo():
+    filas, columnas = (w, h)
+    visitado = [[False] * columnas for _ in range(filas)]
+    islas = 0
+
+    def explorar_isla(i, j, color, items_contados):
+        if (
+            0 <= i < filas
+            and 0 <= j < columnas
+            and mascara[i][j] == color
+            and not visitado[i][j]
+        ):
+            visitado[i][j] = True
+            items_contados[0] += 1
+            explorar_isla(i + 1, j, color, items_contados)
+            explorar_isla(i - 1, j, color, items_contados)
+            explorar_isla(i, j + 1, color, items_contados)
+            explorar_isla(i, j - 1, color, items_contados)
+
+    for i in range(filas):
+        for j in range(columnas):
+            if not visitado[i][j] and mascara[i][j] == 255:
+                color = mascara[i][j]
+                items_contados = [0]
+                explorar_isla(i, j, color, items_contados)
+                if items_contados[0] > 100:
+                    islas += 1
+
+    return islas
+
+resultado_recursivo = contar_islas_recursivo()
+print(f"El número de islas (método recursivo) es: {resultado_recursivo}")
+
+
+cv.imshow('resultado',resultado)
+cv.imshow('mascara',mascara)
+cv.imshow('imagenNormal',img)
+
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+```
+
 # Introducción a la Inteligencia Artificial: El proceso de razonamiento según la lógica
 ## Dado el siguiente problema hacer el planteamiento matemático y programar el siguiente problema
+```python
+def josephus(n, k):
+    people = list(range(1, n + 1))
+    index = 0
+
+    while len(people) > 1:
+        index = (index + k) % len(people)
+        people.pop(index)
+
+    return people[0]
+
+n = 9
+k = 1
+resultado = josephus(n, k)
+print(f"La última persona en pie en un círculo de {n} personas con un paso de {k} es la número {resultado}.")
+
+```
 
 # Introducción a la Inteligencia Artificial: El papel de la heurística
 ## Definir que es la heurística y cual es su papel en la resolución de problemas
