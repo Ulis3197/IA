@@ -1,6 +1,6 @@
 # Introducción a la Inteligencia Artificial Actividad 1, Practica 1
 
-##  Redactar un ensayo mínimo 2000 palabras, del capitulo 1,2, 26, 27, apartado A del libro, inteligencia artificial un enfoque moderno.
+## Redactar un ensayo mínimo 2000 palabras, del capitulo 1,2, 26, 27, apartado A del libro, inteligencia artificial un enfoque moderno.
 
 La inteligencia artificial (IA) ha experimentado muchos cambios significativa en un lapso de poco más de 70 años, abarcando diversas áreas del conocimiento. Este ensayo se enfocará en explorar los capítulos 1, 2, 26 y 27 del libro Inteligencia Artificial un Enfoque Moderno.
 
@@ -65,12 +65,15 @@ Pensar en la IA a gran escala plantea preguntas importantes sobre cómo cambiar�
 ## Redactar un ensayo del Documental sobre IA mínimo 3000 palabras.
 
 # Introducción a la Inteligencia Artificial: Tipos de Inteligencia.
+
 ## Escribir un ensayo mínimo de 4 cuartillas de la teoría de las inteligencias múltiples según Gardner
 
 # Introducción a la Inteligencia Artificial: Introspección
+
 ## Problema de los ocho alfiles
 
 # Introducción a la Inteligencia Artificial: Introspección
+
 ## Hacer un programa que pueda contar el numero de elementos que son del mismo color.
 
 ### Iteraitivo
@@ -209,6 +212,7 @@ print(f"El número de islas (método recursivo) es: {resultado_recursivo}")
 ```
 
 # Introducción a la Inteligencia Artificial: Introspección
+
 ## Una vez que se resolvió el algoritmo de las islas en la siguiente imagen contar los elementos que tienen el color rojo
 
 ```python
@@ -279,7 +283,9 @@ cv.destroyAllWindows()
 ```
 
 # Introducción a la Inteligencia Artificial: El proceso de razonamiento según la lógica
+
 ## Dado el siguiente problema hacer el planteamiento matemático y programar el siguiente problema
+
 ```python
 def josephus(n, k):
     people = list(range(1, n + 1))
@@ -299,14 +305,66 @@ print(f"La última persona en pie en un círculo de {n} personas con un paso de 
 ```
 
 # Introducción a la Inteligencia Artificial: El papel de la heurística
+
 ## Definir que es la heurística y cual es su papel en la resolución de problemas
+
 ## Resolver con recursividad, programar.
+
+```python
+
+matriz = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [2, 0, 0, 0, 0, 0, 1, 0, 1],
+    [1, 1, 1, 0, 1, 1, 1, 0, 1],
+    [1, 0, 0, 0, 1, 0, 1, 0, 1],
+    [1, 0, 1, 1, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 1, 0, 1, 0, 1],
+    [3, 0, 1, 0, 0, 0, 1, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+]
+
+def encontrar_camino(matriz, fila, columna, camino):
+    if not (0 <= fila < len(matriz) and 0 <= columna < len(matriz[0])):
+        return False
+
+    if matriz[fila][columna] == 3:
+        camino.append((fila, columna))
+        return True
+
+    if matriz[fila][columna] in [0, 2]:
+        matriz[fila][columna] = -1
+
+        movimientos = [(fila+1, columna), (fila-1, columna), (fila, columna+1), (fila, columna-1)]
+        if any(encontrar_camino(matriz, f, c, camino) for f, c in movimientos):
+            camino.append((fila, columna))
+            return True
+
+        matriz[fila][columna] = 0
+
+    return False
+
+def resolver_laberinto(matriz):
+    inicio = [(i, j) for i, fila in enumerate(matriz) for j, valor in enumerate(fila) if valor == 2][0]
+    camino = []
+
+    if encontrar_camino(matriz, inicio[0], inicio[1], camino):
+        camino.reverse()
+        print("Camino encontrado:", camino)
+    else:
+        print("No se encontró un camino.")
+
+resolver_laberinto(matriz)
+
+
+```
+
 ## Proponer Algoritmo de Solución, programar.
 
 # Reglas y Búsquedas : Espacio de Estados
+
 ## Generar el espacio de estados de los siguientes problemas
 
 # Generación de Dataset
+
 ## Generar un dataset de rostros por lo menos 5 diferentes
-
-
