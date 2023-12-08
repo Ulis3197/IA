@@ -445,3 +445,630 @@ cv.destroyAllWindows()
 
 
 ```
+
+
+# Proyectos Final
+## Juego Phaser
+El juego consiste en un jugador que debe de esquivar las balas tanto en vertical como horizontal, la bala vertical tiene una velocidad variable, mientras que la bala horizontal tiene una velocidad constante, ya que yo utilice la gravedad del juego como su velocidad, dentro de la gran cantidad de código y condiciones que existen creo que es importante explicar algunos detalles, mi red neuronal tiene 4 entradas que son:
+
+1. La distancia en X de la bala1 y del jugador
+2. La velocidad de la bala 1
+3. La distancia en Y de la bala2 y el jugador
+4. La velocidad de la bala 2 (que es la gravedad)
+
+Y como targets tengo también 4 que son mis salidas:
+
+1. El estatus aire (1 si estaba en el aire)
+2. El estatus suelo (1 si estaba en el suelo)
+3. El estatus mover (1 si se movió)
+4. El estatus no mover (1 sino se movió)
+
+Finalmente la red neuronal tiene 2 capas ocultas de 6 neuronas cada una.
+
+Entonces cuando el juego se encuentra en manual siempre se mantiene entrenando cada que se accede a la función update, y cuando el juego se pone en automático si la posición de la bala2 en Y es mayor a la altura -200 o la posición de la bala en X es menor a 400, se manda llamar a la función de datosDeEntrenamiento para que se manden los datos de entrada que en ese momento se tiene y me genere los target, de esta forma puedo saber si es necesario saltar o no y si es necesario moverse o no, y con esto se puede jugar el juego de forma automática.
+
+```javascript
+var w = 800;
+var h = 400;
+var jugador;
+var fondo;
+
+var bala,
+  balaD = false,
+  nave;
+
+var salto;
+var menu;
+
+var velocidadBala;
+var despBala;
+var estatusAire;
+var estatuSuelo;
+
+var nnNetwork,
+  nnEntrenamiento,
+  nnSalida,
+  datosEntrenamiento = [];
+var modoAuto = false,
+  eCompleto = false;
+
+// Cosas para bala vertical
+var bala2;
+var izquierda, derecha;
+var mover, noMover;
+var despBala2;
+
+var juego = new Phaser.Game(w, h, Phaser.CANVAS, "", {
+  preload: preload,
+  create: create,
+  update: update,
+  render: render,
+});
+
+function preload() {
+  juego.load.image("fondo", "assets/game/fondo.jpg");
+  juego.load.spritesheet("mono", "assets/sprites/altair.png", 32, 48);
+  juego.load.image("nave", "assets/game/ufo.png");
+  juego.load.image("bala", "assets/sprites/purple_ball.png");
+  juego.load.image("menu", "assets/game/menu.png");
+}
+
+function create() {
+  juego.physics.startSystem(Phaser.Physics.ARCADE);
+  juego.physics.arcade.gravity.y = 800;
+  juego.time.desiredFps = 30;
+
+  fondo = juego.add.tileSprite(0, 0, w, h, "fondo");
+  nave = juego.add.sprite(w - 100, h - 70, "nave");
+  bala = juego.add.sprite(w - 100, h, "bala");
+  bala2 = juego.add.sprite(50, 0, "bala");
+  jugador = juego.add.sprite(50, h, "mono");
+
+  juego.physics.enable(jugador);
+  jugador.body.collideWorldBounds = true;
+  var corre = jugador.animations.add("corre", [8, 9, 10, 11]);
+  jugador.animations.play("corre", 10, true);
+
+  juego.physics.enable(bala);
+  bala.body.collideWorldBounds = true;
+
+  juego.physics.enable(bala2);
+  bala2.body.collideWorldBounds = true;
+
+  pausaL = juego.add.text(w - 100, 20, "Pausa", {
+    font: "20px Arial",
+    fill: "#fff",
+  });
+  pausaL.inputEnabled = true;
+  pausaL.events.onInputUp.add(pausa, self);
+  juego.input.onDown.add(mPausa, self);
+
+  salto = juego.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  izquierda = juego.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  derecha = juego.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+
+  nnNetwork = new synaptic.Architect.Perceptron(4, 6, 6, 4);
+  nnEntrenamiento = new synaptic.Trainer(nnNetwork);
+}
+
+function enRedNeural() {
+  nnEntrenamiento.train(datosEntrenamiento, {
+    rate: 0.0003,
+    iterations: 10000,
+    shuffle: true,
+  });
+}
+
+function datosDeEntrenamiento(param_entrada) {
+  // console.log("Entrada", param_entrada[0] + " " + param_entrada[1]);
+  nnSalida = nnNetwork.activate(param_entrada);
+  var aire = Math.round(nnSalida[0] * 100);
+  var piso = Math.round(nnSalida[1] * 100);
+  var mover = Math.round(nnSalida[2] * 100);
+  var noMover = Math.round(nnSalida[3] * 100);
+  console.log(`aire ${aire} piso ${piso} mover ${mover} noMover ${noMover}`);
+}
+
+function pausa() {
+  juego.paused = true;
+  menu = juego.add.sprite(w / 2, h / 2, "menu");
+  menu.anchor.setTo(0.5, 0.5);
+}
+
+function mPausa(event) {
+  if (juego.paused) {
+    var menu_x1 = w / 2 - 270 / 2,
+      menu_x2 = w / 2 + 270 / 2,
+      menu_y1 = h / 2 - 180 / 2,
+      menu_y2 = h / 2 + 180 / 2;
+
+    var mouse_x = event.x,
+      mouse_y = event.y;
+
+    if (
+      mouse_x > menu_x1 &&
+      mouse_x < menu_x2 &&
+      mouse_y > menu_y1 &&
+      mouse_y < menu_y2
+    ) {
+      if (
+        mouse_x >= menu_x1 &&
+        mouse_x <= menu_x2 &&
+        mouse_y >= menu_y1 &&
+        mouse_y <= menu_y1 + 90
+      ) {
+        eCompleto = false;
+        datosEntrenamiento = [];
+        modoAuto = false;
+      } else if (
+        mouse_x >= menu_x1 &&
+        mouse_x <= menu_x2 &&
+        mouse_y >= menu_y1 + 90 &&
+        mouse_y <= menu_y2
+      ) {
+        if (!eCompleto) {
+          console.log(
+            "",
+            "Entrenamiento " + datosEntrenamiento.length + " valores"
+          );
+          enRedNeural();
+          eCompleto = true;
+        }
+        modoAuto = true;
+      }
+
+      menu.destroy();
+      resetVariables();
+      resetBalaY();
+      juego.paused = false;
+    }
+  }
+}
+
+function resetVariables() {
+  jugador.body.velocity.x = 0;
+  jugador.body.velocity.y = 0;
+  jugador.position.x = 50;
+  bala.body.velocity.x = 0;
+  bala.position.x = w - 100;
+  balaD = false;
+  bala2.body.velocity.y = 0;
+  bala2.position.y = 0;
+  bala2.body.allowGravity = true;
+}
+
+function resetBalaY() {
+  bala2.position.y = 0;
+  bala2.body.velocity.y = 0;
+  bala2.body.allowGravity = false;
+}
+
+function saltar() {
+  jugador.body.velocity.y = -300;
+}
+
+function moverIzquierda() {
+  jugador.position.x -= 10;
+}
+
+function moverDerecha() {
+  jugador.position.x += 10;
+}
+
+function update() {
+  fondo.tilePosition.x -= 1;
+
+  juego.physics.arcade.collide(bala, jugador, colisionH, null, this);
+  juego.physics.arcade.collide(bala2, jugador, colisionH, null, this);
+
+  estatuSuelo = 1;
+  estatusAire = 0;
+  noMover = 1;
+  mover = 0;
+
+  if (!jugador.body.onFloor()) {
+    estatuSuelo = 0;
+    estatusAire = 1;
+  }
+
+  despBala = Math.floor(jugador.position.x - bala.position.x);
+  despBala2 = Math.floor(jugador.position.y - bala2.position.y);
+
+  if (modoAuto == false && salto.isDown && jugador.body.onFloor()) {
+    saltar();
+  }
+  // if (modoAuto == false && izquierda.isDown) {
+  //   moverIzquierda();
+  // }
+  if (modoAuto == false && derecha.isDown) {
+    moverDerecha();
+    noMover = 0;
+    mover = 1;
+  }
+
+  if (
+    modoAuto == true &&
+    (bala.position.x < 400 || bala2.position.y > h - 200)
+  ) {
+    datosDeEntrenamiento([
+      despBala,
+      velocidadBala,
+      despBala2,
+      bala2.body.gravity.y,
+    ]);
+    if (nnSalida[0] >= nnSalida[1] && jugador.body.onFloor()) {
+      saltar();
+    }
+    if (nnSalida[2] < nnSalida[3] && nnSalida[3] <= 0.9) {
+      moverDerecha();
+    }
+  }
+
+  if (balaD == false) {
+    disparo();
+  }
+
+  if (bala.position.x <= 0) {
+    resetVariables();
+  }
+
+  if (bala2.position.y >= h - 30) {
+    resetBalaY();
+  }
+
+  if (modoAuto == false) {
+    datosEntrenamiento.push({
+      input: [despBala, velocidadBala, despBala2, bala2.body.gravity.y],
+      output: [estatusAire, estatuSuelo, mover, noMover],
+    });
+
+    console.log(
+      `estatuSuelo ${estatuSuelo} estatusAire ${estatusAire} mover ${mover} noMover ${noMover}`
+    );
+  }
+}
+
+function disparo() {
+  velocidadBala = -1 * velocidadRandom(300, 800);
+  bala.body.velocity.y = 0;
+  bala.body.velocity.x = velocidadBala;
+  balaD = true;
+}
+
+function colisionH() {
+  pausa();
+}
+
+function velocidadRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function render() {}
+
+```
+
+## HaarCascade CubreBocas
+El proyecto consiste en un detector de rostros con cubrebocas y si hay un rostro sin cubrebocas que no lo reconozca, la herramienta que se utilizó para el entrenamiento fue el Cascade Trainer GUI, las imágenes tenían un tamaño de 120 x 120 y estaban en escala de grises y las configuraciones utilizadas en el Cascade Trainer GUI fueron las siguientes:
+
+### Input
+1. Carpeta p (imagenes positivas): 90 %
+2. Carpeta n (imagenes negativas): 4255
+
+### Common
+1. Number of Stages: 20
+2. Pre-calculated Values Buffer Size: 4096
+3. Pre-calculated Indices Buffer Size: 4096
+4. Number of Threads: 5
+5. Acceptance Ratio Break Value: -1.00
+
+## Cascade
+1. Sample Width: 24
+2. Sample Height: 24
+3. Feature Type: Haar
+4. Haar Feature Type: Basic
+
+Mis imágenes positivas de entrenamiento son gente usando cubrebocas de diferentes colores, pero donde predomina el cubrebocas color negro, las imágenes negativas son una mezcla entre la misma gente sin cubrebocas y fondos en especial de casas o salones, el código con el que sé probo el cascade fue el siguiente:
+
+```python
+import numpy as np
+import cv2 as cv
+import math
+
+rostro = cv.CascadeClassifier('./pruebas7/classifier/cascade.xml')
+cap = cv.VideoCapture(0)
+
+if not cap.isOpened():
+    print("No se puede abrir la camara")
+    exit()
+
+i=0
+
+while True:
+    ret, frame = cap.read()
+    i=i+1
+    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+    rostros = rostro.detectMultiScale(gray, scaleFactor= 1.1, minNeighbors= 60, minSize=(60, 60), maxSize=(250,250))
+    for(x,y,w,h) in rostros:
+        frame =cv.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 5)
+
+    if not ret:
+        print("No se puede")
+        break
+    
+    cv.imshow('rostros', frame)
+
+    if cv.waitKey(1) == ord('q'):
+        break
+
+cap.release()
+cv.destroyAllWindows()
+```
+
+En primer lugar se carga el xml del cascade, después se abre la cámara del dispositivo y se empieza a leer cada frame, después se convierte a escala de grises y se detectan los rostros con el cascade, después se dibuja un rectángulo en cada rostro detectado y finalmente se muestra el frame con los rectángulos, el resultado fue el siguiente, de esta forma es como funciona el código, si hay un rostro con cubrebocas lo detecta y si no no lo detecta.
+
+
+## CNN Flores
+
+El proyecto consiste en un clasificador de flores, el cual se entrenó con 5 tipos de flores diferentes, el dataset fue obtenido totalmente de dataset de internet como lo fue la pagina de Kaggle donde pude encontrar una gran diversida de dataset de flores, aunque ayudo mucho a facilitar el trabajo, también fue un poco complicado ya que no todos los dataset estaban en el mismo formato, por lo que tuve que hacer un poco de limpieza de datos, los tipos de flores utilizados fueron los siguienete:
+
+1. BalloonFlower 5673
+2. BlazingStar 7254
+3. Daisy 7068
+4. Roses 9548
+5. Sunflower 8959
+
+Debido que los dataset que consegui en la pagina antes mencionada eran muy pequeños tuve que rotar las imagenes desde -15 a 15 grados para no tener una gran perdida de informacion en la imagen, en el codigo que se proporcionara mas adelante se puede destacar algunos punto importante:
+
+Tamaño de las imagenes: 50 x 50 x 3 (Imagenes a color)
+Formato de las imagenes: jpg y jpeg
+INIT_LR: 1e-3 (0.001)
+epochs: 20
+batch_size = 32
+
+Con las configuraciones anteriores se obtuvo los siguientes resultados que se pueden observar tambien en las graficas:
+
+Loss: 0.3233
+Accuracy: 0.9026
+
+Val-Loss: 0.2147
+Val-Accuracy: 0.9401
+
+![Accuracy](Accuracy.png)
+![Loss](Loss.png)
+
+Como punto final a obsevar una vez finalizado el entrenamiento se guarda en un archivo llamado prueba4.h5py el cual se puede utilizar para hacer predicciones, el codigo utilizado para el entrenamiento fue el siguiente:
+
+```python 
+
+import numpy as np
+import os
+import re
+import matplotlib.pyplot as plt
+%matplotlib inline
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+import keras
+import tensorflow as tf
+from tensorflow.keras.utils import to_categorical
+from keras.models import Sequential,Model
+from tensorflow.keras.layers import Input
+from keras.layers import Dense, Dropout, Flatten
+from tensorflow.keras.layers import (
+    BatchNormalization, SeparableConv2D, MaxPooling2D, Activation, Flatten, Dropout, Dense, Conv2D
+)
+from keras.layers import LeakyReLU
+
+dirname = os.path.join(os.getcwd(),'.\dataset3')
+imgpath = dirname + os.sep 
+
+images = []
+directories = []
+dircount = []
+prevRoot=''
+cant=0
+
+print("leyendo imagenes de ",imgpath)
+
+for root, dirnames, filenames in os.walk(imgpath):
+    for filename in filenames:
+        if re.search("\.(jpg|jpeg|png|bmp|tiff)$", filename):
+            cant=cant+1
+            filepath = os.path.join(root, filename)
+            image = plt.imread(filepath)
+            if(len(image.shape)==3):
+                
+                images.append(image)
+            b = "Leyendo..." + str(cant)
+            print (b, end="\r")
+            if prevRoot !=root:
+                print(root, cant)
+                prevRoot=root
+                directories.append(root)
+                dircount.append(cant)
+                cant=0
+dircount.append(cant)
+
+dircount = dircount[1:]
+dircount[0]=dircount[0]+1
+print('Directorios leidos:',len(directories))
+print("Imagenes en cada directorio", dircount)
+print('suma Total de imagenes en subdirs:',sum(dircount))
+
+labels=[]
+indice=0
+for cantidad in dircount:
+    for i in range(cantidad):
+        labels.append(indice)
+    indice=indice+1
+print("Cantidad etiquetas creadas: ",len(labels))
+
+deportes=[]
+indice=0
+for directorio in directories:
+    name = directorio.split(os.sep)
+    print(indice , name[len(name)-1])
+    deportes.append(name[len(name)-1])
+    indice=indice+1
+
+y = np.array(labels)
+X = np.array(images, dtype=np.uint8) 
+
+classes = np.unique(y)
+nClasses = len(classes)
+print('Total number of outputs : ', nClasses)
+print('Output classes : ', classes)
+
+train_X,test_X,train_Y,test_Y = train_test_split(X,y,test_size=0.2)
+print('Training data shape : ', train_X.shape, train_Y.shape)
+print('Testing data shape : ', test_X.shape, test_Y.shape)
+
+plt.figure(figsize=[5,5])
+
+plt.subplot(121)
+plt.imshow(train_X[0,:,:], cmap='gray')
+plt.title("Ground Truth : {}".format(train_Y[0]))
+
+plt.subplot(122)
+plt.imshow(test_X[0,:,:], cmap='gray')
+plt.title("Ground Truth : {}".format(test_Y[0]))
+
+train_X = train_X.astype('float32')
+test_X = test_X.astype('float32')
+train_X = train_X/255.
+test_X = test_X/255.
+plt.imshow(test_X[0,:,:])
+
+train_Y_one_hot = to_categorical(train_Y)
+test_Y_one_hot = to_categorical(test_Y)
+
+print('Original label:', train_Y[0])
+print('After conversion to one-hot:', train_Y_one_hot[0])
+
+train_X,valid_X,train_label,valid_label = train_test_split(train_X, train_Y_one_hot, test_size=0.2, random_state=13)
+print(train_X.shape,valid_X.shape,train_label.shape,valid_label.shape)
+
+#declaramos variables con los parámetros de configuración de la red
+INIT_LR = 1e-3 
+epochs = 20 
+batch_size = 32 
+
+sport_model = Sequential()
+sport_model.add(Conv2D(32, kernel_size=(3, 3),activation='linear',padding='same',input_shape=(50,50,3)))
+sport_model.add(LeakyReLU(alpha=0.1))
+sport_model.add(MaxPooling2D((2, 2),padding='same'))
+sport_model.add(Dropout(0.5))
+
+sport_model.add(Flatten())
+sport_model.add(Dense(32, activation='linear'))
+sport_model.add(LeakyReLU(alpha=0.1))
+sport_model.add(Dropout(0.5))
+sport_model.add(Dense(nClasses, activation='softmax'))
+
+sport_model.compile(loss=keras.losses.categorical_crossentropy, optimizer=tf.keras.optimizers.legacy.SGD(learning_rate=INIT_LR, decay=INIT_LR / 100),metrics=['accuracy'])
+
+sport_train = sport_model.fit(train_X, train_label, batch_size=batch_size,epochs=epochs,verbose=1,validation_data=(valid_X, valid_label))
+
+sport_model.save("./prueba4.h5py")
+
+test_eval = sport_model.evaluate(test_X, test_Y_one_hot, verbose=1)
+
+print('Test loss:', test_eval[0])
+print('Test accuracy:', test_eval[1])
+
+sport_train.history
+
+accuracy = sport_train.history['accuracy']
+val_accuracy = sport_train.history['val_accuracy']
+loss = sport_train.history['loss']
+val_loss = sport_train.history['val_loss']
+epochs = range(len(accuracy))
+plt.plot(epochs, accuracy, 'bo', label='Training accuracy')
+plt.plot(epochs, val_accuracy, 'b', label='Validation accuracy')
+plt.title('Training and validation accuracy')
+plt.legend()
+plt.figure()
+plt.plot(epochs, loss, 'bo', label='Training loss')
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.title('Training and validation loss')
+plt.legend()
+plt.show()
+
+predicted_classes2 = sport_model.predict(test_X)
+
+predicted_classes=[]
+for predicted_sport in predicted_classes2:
+    predicted_classes.append(predicted_sport.tolist().index(max(predicted_sport)))
+predicted_classes=np.array(predicted_classes)
+
+correct = np.where(predicted_classes==test_Y)[0]
+print("Found %d correct labels" % len(correct))
+for i, correct in enumerate(correct[0:9]):
+    plt.subplot(3,3,i+1)
+    plt.imshow(test_X[correct].reshape(50,50,3), cmap='gray', interpolation='none')
+    plt.title("{}, {}".format(deportes[predicted_classes[correct]],
+                                                    deportes[test_Y[correct]]))
+
+    plt.tight_layout()
+
+incorrect = np.where(predicted_classes!=test_Y)[0]
+print("Found %d incorrect labels" % len(incorrect))
+for i, incorrect in enumerate(incorrect[0:9]):
+    plt.subplot(3,3,i+1)
+    plt.imshow(test_X[incorrect].reshape(50,50,3), cmap='gray', interpolation='none')
+    plt.title("{}, {}".format(deportes[predicted_classes[incorrect]],
+                                                    deportes[test_Y[incorrect]]))
+    plt.tight_layout()
+
+target_names = ["Class {}".format(i) for i in range(nClasses)]
+print(classification_report(test_Y, predicted_classes, target_names=target_names))
+
+```
+
+Para finalizar el código que se mostrara a continuación es el que se utilizó para implementar el modelo entrenado y hacer predicciones, el cual se puede observar que se carga el modelo y después se introduce la ruta de una imagen para que la utilice, se redimensiona a una imagen 50 x 50 que es el tamaño con el que se entrenó la CNN, después se aplica la predicción con el .predict y finalmente mostramos el resultado que nos arrojó esa función.
+
+```python
+
+import numpy as np
+from tensorflow import keras
+from PIL import Image
+import matplotlib.pyplot as plt
+
+def flowerCase(numLabel):
+    if numLabel == 0:
+        return "Ballon Flower"
+    elif numLabel == 1:
+        return "Blazing Star"
+    elif numLabel == 2:
+        return "Daisy"
+    elif numLabel == 3:
+        return "Rose"
+    elif numLabel == 4:
+        return "Sunflower"
+    else:
+        return "Error"
+
+# Cargar el modelo
+modelo = keras.models.load_model('./prueba4.h5py') 
+  
+imagen_ruta = './ImagenesTest/sunf.jpeg'  
+imagen = Image.open(imagen_ruta)
+imagen = imagen.resize((50, 50))  
+imagen_array = np.array(imagen) / 255.0 
+
+# Añadir una dimensión para batch
+imagen_array = np.expand_dims(imagen_array, axis=0)
+
+# Realizar la predicción
+prediccion = modelo.predict(imagen_array)
+
+# Mostrar el resultado
+etiqueta_predicha = np.argmax(prediccion)
+flower = flowerCase(etiqueta_predicha)
+print(f'Etiqueta predicha: {flower}')
+
+# Puedes mostrar la imagen si lo deseas
+plt.imshow(imagen)
+plt.show()
+
+
+```
