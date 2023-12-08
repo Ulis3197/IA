@@ -393,17 +393,17 @@ Tres misioneros se perdieron explorando una jungla. Separados de sus compañeros
 Estado Inicial: [CCC,MMM][]
 Estado Final: [][CCC,MMM]
 
-1.- Se envia un canival y un misionero al otro lado [CC,MM][C,M]
-2.- Se regresa el misionero solo [CC,MMM][C]
-3.- Se envian 2 canivales al otro lado [MMM][CCC]
-4.- Se regresa un canival [C,MMM][CC]
-5.- Se envian 2 misioneros al otro lado [C,M][CC,MM]
-6.- Se regresa un misionero y un canival [CC,MM][C,M]
-7.- Se envian 2 misioneros al otro lado [CC][C,MMM]
-8.- Se regresa un canival [CCC][MMM]
-9.- Se envia 2 canivales al otro lado [C][CC,MMM]
-10.- Se regresa un canival [CC][C,MMM]
-11.- Se envia 2 canivales al otro lado [][CCC,MMM]
+1. Se envia un canival y un misionero al otro lado [CC,MM][C,M]
+2. Se regresa el misionero solo [CC,MMM][C]
+3. Se envian 2 canivales al otro lado [MMM][CCC]
+4. Se regresa un canival [C,MMM][CC]
+5. Se envian 2 misioneros al otro lado [C,M][CC,MM]
+6. Se regresa un misionero y un canival [CC,MM][C,M]
+7. Se envian 2 misioneros al otro lado [CC][C,MMM]
+8. Se regresa un canival [CCC][MMM]
+9. Se envia 2 canivales al otro lado [C][CC,MMM]
+10. Se regresa un canival [CC][C,MMM]
+11. Se envia 2 canivales al otro lado [][CCC,MMM]
 
 # Generación de Dataset
 
