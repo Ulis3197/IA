@@ -364,7 +364,84 @@ resolver_laberinto(matriz)
 # Reglas y Búsquedas : Espacio de Estados
 
 ## Generar el espacio de estados de los siguientes problemas
+### Ranas
+El juego consiste en pasar las 3 ranas verdes a la derecha y las 3 ranas marrones a la izquierda. Las ranas pueden saltar a una piedra vacía que tengan delante, o saltar por encima de otra rana si en medio de ambas hay una piedra vacía. Pulsa sobre la rana que quieres que salte.
+
+Estado Inicial: MMM_VVV
+Estado Final: VVV_MMM
+
+1. MMM_VVV
+2. MM_MVVV
+3. MMVM_VV
+4. MMVMV_V
+5. MMV_VMV
+6. M_VMVMV
+7. _MVMVMV
+8. VM_MVMV
+9. VMVM_MV
+10. VMVMVM_
+11. VMVMV_M
+12. VMV_VMM
+13. V_VMVMM
+14. VV_MVMM
+15. VVVM_MM
+16. VVV_MMM
+
+### Misioneros y Canivales
+Tres misioneros se perdieron explorando una jungla. Separados de sus compañeros, sin alimento y sin radio, solo sabían que para llegar a su des tino debían ir siempre hacia adelante. Los tres misioneros se detuvieron frente a un río que les bloqueaba el paso, preguntándose que podían hacer. De repente, aparecieron tres caníbales llevando un bote, pues también el los querían cruzar el río. Ya anteriormente se habían encontrado grupos de misioneros y caníbales, y cada uno respetaba a los otros, pero sin confiar en ellos. Los caníbales se daban un festín con los misioneros cuando les superaban en número. Los tres caníbales deseaban ayudar a los misioneros a cruzar el río, pero su bote no podía llevar más de dos personas a la vez y los misioneros no querían que los caníbales les superaran en número. ¿Cómo puede resolverse el problema, sin que en ningún momento haya más caníbales que misioneros en cualquier orilla del río? recuerda que un misionero y un caníbal en una orilla del río más uno o dos caníbales en el bote al mismo lado, significa que los misioneros tendrán problemas.
+
+Estado Inicial: [CCC,MMM][]
+Estado Final: [][CCC,MMM]
+
+1.- Se envia un canival y un misionero al otro lado [CC,MM][C,M]
+2.- Se regresa el misionero solo [CC,MMM][C]
+3.- Se envian 2 canivales al otro lado [MMM][CCC]
+4.- Se regresa un canival [C,MMM][CC]
+5.- Se envian 2 misioneros al otro lado [C,M][CC,MM]
+6.- Se regresa un misionero y un canival [CC,MM][C,M]
+7.- Se envian 2 misioneros al otro lado [CC][C,MMM]
+8.- Se regresa un canival [CCC][MMM]
+9.- Se envia 2 canivales al otro lado [C][CC,MMM]
+10.- Se regresa un canival [CC][C,MMM]
+11.- Se envia 2 canivales al otro lado [][CCC,MMM]
 
 # Generación de Dataset
 
 ## Generar un dataset de rostros por lo menos 5 diferentes
+Este es el código que se utilizó para la generación del dataset, dependiendo de si presionaba la tecla a se toma una imagen positiva que se guarda en la carpeta p, si se presiona la tecla s se toma una imagen negativa y se guarda en la carpeta n
+
+```python
+
+import cv2 as cv
+
+cap = cv.VideoCapture(0)
+
+i=0
+
+while True:
+    ret, frame = cap.read()
+
+    frame =cv.rectangle(frame, (100, 100), (400, 400), (0, 255, 0), 3)
+    frame2= frame[100:400, 100:400]
+    
+    cv.imshow('frame', frame)
+    cv.imshow('dataset', frame2)
+
+
+    k = cv.waitKey(1) 
+    if k == ord('a'):
+        i=i+1
+        cv.imwrite('./dataset/p/Rostros'+str(i)+'.jpg', frame2)
+    if k == ord('s'):
+        i=i+1
+        cv.imwrite('./dataset/n/NoRostros'+str(i)+'.jpg', frame2)
+        
+
+    if k == ord('q'):
+        break
+
+cap.release()
+cv.destroyAllWindows()
+
+
+```
