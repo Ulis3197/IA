@@ -143,6 +143,9 @@ En este punto, nos hacen pensar en cómo la inteligencia artificial podría camb
 
 ## Problema de los ocho alfiles
 La solucion de los 8 alfiles se logro en 18 movimientos, despues de varios intentos y errores, se logro llegar a la solucion, la cual se muestra a continuacion:
+
+
+
 ![8](8A.jpg)
 
 El principal movimiento que se realizo para llegar a la solucion fue hacer un tipo movimiento espejo, es decir si se movia un alfil en una posicion, se hacia el mismo movimiento pero en la posicion del afil contrario, esto se hizo para que los alfiles se fueran moviendo de manera simetrica, y asi poder llegar a la solucion.
