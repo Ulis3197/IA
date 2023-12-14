@@ -64,6 +64,77 @@ Pensar en la IA a gran escala plantea preguntas importantes sobre cómo cambiar�
 
 ## Redactar un ensayo del Documental sobre IA mínimo 3000 palabras.
 
+El documental nos introduce al fascinante mundo de la inteligencia artificial, comenzando por discutir los argumentos a favor y en contra de esta tecnología. Nos hace pensar en cómo podría afectarnos en el futuro y plantea la idea de que, para evitar problemas, sería importante establecer reglas para controlarla.
+
+Para entender mejor de qué se trata la inteligencia artificial, el documental nos presenta las opiniones de expertos. El Dr. Rodney Broocks la ve como un conjunto de prácticas y piezas organizadas por las personas, mientras que el Dr. Max Tegmark la describe como la capacidad de lograr objetivos complicados sin ser biológica. Estas definiciones claras nos ayudan a comprender la complejidad de la inteligencia artificial y cómo los humanos la perciben.
+
+El video también destaca un punto clave: consideramos inteligente a una máquina cuando puede ver, escuchar, entender y aprender sobre el mundo que la rodea. Esto subraya la conexión esencial entre la inteligencia artificial y la capacidad de percibir y aprender constantemente, aspectos cruciales para su desarrollo y utilidad en nuestra vida cotidiana.
+
+A medida que exploramos estas ideas emocionantes, surge una pregunta importante: ¿hasta qué punto deberíamos permitir que la inteligencia artificial influya en nuestra vida? La sugerencia de establecer reglas se vuelve fundamental, destacando la importancia de establecer límites éticos. Esta llamada a la acción nos recuerda que, aunque la innovación es emocionante, también necesitamos precaución para garantizar que la inteligencia artificial beneficie a la sociedad sin comprometer nuestros valores éticos. La creación de máquinas inteligentes se topa con un gran desafío: nuestro lenguaje humano lleno de matices. Las computadoras, acostumbradas a reglas fijas, encuentran difícil entender nuestras palabras llenas de variaciones.
+
+Un avance emocionante en la inteligencia artificial fue cuando IBM creó a Watson para competir en el programa de TV Jeopardy!. En este concurso, los concursantes eligen preguntas de varios temas y deben responder en forma de pregunta.
+
+Desarrollar a Watson llevó años de trabajo y práctica. Esta máquina inteligente utilizó algoritmos avanzados y tecnologías poderosas, como el aprendizaje automático, para enfrentarse a desafíos simulados antes de la televisión.
+
+En el año de 2011, Watson hizo su debut en el famoso concurso Jeopardy, dejando a todos sorprendidos con su habilidad para dividir preguntas, investigar en libros y revistas, y ofrecer respuestas en tan solo 2 segundos. Watson no solo entendió las preguntas, ¡sino que también derrotó a los dos mejores jugadores! Este logro no solo resalta la mejora en la comunicación entre humanos y máquinas, sino también la capacidad de la inteligencia artificial para enfrentar situaciones desafiantes. Nos brinda una visión de un futuro donde las máquinas no solo son útiles, sino que también participan activamente en nuestras vidas cotidianas.
+
+Después del sorprendente éxito de Watson, el equipo de IBM se planteó un desafío aún más ambicioso: llevar la inteligencia artificial a un nivel superior, permitiéndole participar en debates con humanos y tomar decisiones. Este paso adelante representa un emocionante avance hacia la integración más profunda de la inteligencia artificial en nuestras interacciones diarias.
+
+La tarea no es fácil; enseñar a la computadora a entender y conectar coherentemente los diferentes temas de varios artículos en cuestión de segundos es un reto monumental. Requiere no solo un procesamiento rápido, sino también la capacidad de comprender y unir ideas de manera lógica. Aquí es donde la inteligencia artificial demuestra su capacidad para procesar información de manera eficiente.
+
+El sistema funciona utilizando información de artículos, documentos y libros a los que puede acceder. Esta información se utiliza para construir un argumento inicial durante el debate. Sin embargo, el verdadero desafío surge cuando la computadora debe escuchar a su oponente humano durante 4 minutos. Este oponente a menudo habla rápido y plantea dilemas éticos y morales.
+
+Durante este tiempo de escucha, la máquina realiza una tarea impresionante: unir información de los artículos disponibles para formular un contraargumento lógico. Este proceso destaca la habilidad de la inteligencia artificial para procesar información en tiempo real y adaptarse al cambio en el debate, mostrando su capacidad para pensar de manera dinámica y responder de manera coherente a los desafíos planteados por los humanos. Este proyecto de IBM no solo significa un avance tecnológico, sino que también plantea preguntas sobre el potencial de las máquinas para participar en procesos que requieren no solo conocimiento, sino también habilidades para pensar y adaptarse. Este camino nos lleva a explorar nuevos límites en cómo la inteligencia artificial puede integrarse en el complicado mundo del razonamiento y la toma de decisiones.
+
+La omnipresencia de la inteligencia artificial (IA) se manifiesta en diversos campos, desde la comprensión del lenguaje de los delfines hasta robots policías en Dubái y repartidores de pizzas automatizados. Sin embargo, entre estas innovaciones, el vehículo autónomo se erige como uno de los proyectos más desafiantes debido a la imperfección inherente de la inteligencia artificial.
+Se destaca la complejidad de enseñar a la inteligencia artificial a maniobrar un automóvil de manera autónoma. Aunque hemos avanzado, un ejemplo práctico como el robot limpiador doméstico evidencia que la perfección aún escapa a nuestras tecnologías actuales. Aunque puede chocar con las paredes en la tarea de limpiar la casa, este fallo no tiene consecuencias graves a corto plazo. Sin embargo, en el contexto de vehículos autónomos con personas a bordo, la necesidad de evitar choques recurrentes se vuelve crítica.
+
+El cuestionamiento clave surge: ¿por qué aún no contamos con autos 100% autónomos? La respuesta radica en la dificultad de enseñar a la inteligencia artificial a tomar decisiones complejas en situaciones peligrosas, como conducir en condiciones climáticas adversas o enfrentar el tráfico con otros conductores. La fiabilidad de estos autos autónomos se ve comprometida por la complejidad de implementar sistemas de seguridad vial completos.
+
+La inteligencia artificial en los vehículos autónomos se basa en la percepción, donde la máquina analiza su entorno, predice cómo se moverán los objetos detectados y planifica su ruta. Este enfoque, aunque prometedor, enfrenta desafíos significativos para garantizar la seguridad y la toma de decisiones confiable en entornos dinámicos.
+
+La inteligencia artificial (IA) está haciendo cosas increíbles, como aprender de datos y encontrar soluciones por sí misma. Todo empezó en los años 50, cuando una máquina aprendió a ganar en juegos de damas chinas. Hoy en día, gracias a tecnologías mejores y mucha información, la IA está aprendiendo mucho más rápido.
+
+Parte de este aprendizaje incluye lo que hacemos en Internet, desde buscar en Google hasta hablar en redes sociales. La IA nos observa para entender qué nos gusta y darnos mejores resultados.
+
+Cuando hablamos de trabajar con la IA, algunas personas se preocupan de que las máquinas nos reemplacen en nuestros trabajos. Pero la historia nos dice que cada vez que las máquinas toman algunas tareas, también crean nuevos trabajos que no podríamos hacer sin su ayuda. Entonces, en lugar de ser reemplazados, la idea es trabajar junto con las máquinas.
+
+El video sugiere que no seremos sustituidos por la IA, sino que las personas que sepan trabajar con ella tendrán más oportunidades laborales. Así que la IA se convierte en una especie de compañera de trabajo en lugar de una amenaza.
+
+Otro tema interesante es el de los robots "humanos", que intentan parecerse a nosotros. Pero hay un debate sobre si estas máquinas pueden llegar a tener algo parecido a una conciencia, que nos permite sentir empatía y tener moralidad. Es un tema importante, especialmente si queremos usar la IA en lugares donde estos sentimientos son esenciales.
+
+La inteligencia artificial (IA) está siendo de gran ayuda en la escuela, desde los niños más pequeños hasta los estudiantes universitarios. Se nos presenta un mundo donde la tecnología y la educación se unen para hacer el aprendizaje más fácil y personalizado.
+
+Una de las cosas interesantes es una aplicación que ayuda a los niños a aprender palabras. Sabemos que cada niño aprende de manera diferente y a su propio ritmo, por eso estas aplicaciones son tan útiles. No solo ayudan a cada niño de manera especial, sino que también son un gran apoyo para los maestros, quienes quieren asegurarse de que todos sus estudiantes aprendan de la mejor manera posible.
+
+Para los estudiantes universitarios, hay algo llamado Tutor Watson. Es como un profesor virtual que responde preguntas sobre diferentes temas y ayuda con los estudios haciendo preguntas específicas. Lo genial de Tutor Watson es que adapta las preguntas según lo que entienda el estudiante. El objetivo principal de Watson es ayudar a cada estudiante de manera personalizada y, en el futuro, incluso entender si están frustrados para hacer preguntas que se ajusten a cómo se sienten.
+
+Siempre nos ha intrigado la idea de unirnos con las máquinas, de hacer que la tecnología forme parte de nosotros. Y en este video nos hablan sobre algo llamado háptica, que es básicamente usar el sentido del tacto en nuestras interacciones con la tecnología. Un ejemplo simple de esto es cuando el teléfono vibra en lugar de sonar al recibir una llamada.
+
+En este punto del video, nos presentan a WearWorks, una empresa que usa la háptica de una manera asombrosa. Han creado unos brazaletes especiales para ayudar a las personas con problemas de visión. Estos brazaletes no solo actúan como un GPS, sino que también ofrecen vibraciones para guiar a las personas en su camino. Si alguien con problemas de visión se desvía, siente vibraciones indicándole en qué dirección corregir su camino.
+
+Lo interesante es que estos brazaletes no solo ayudan a una persona, sino que también contribuyen a hacer más rutas disponibles para todos. La información que recopilan de las personas que usan estos brazaletes ayuda a mejorar y ampliar el sistema, haciéndolo más útil con el tiempo.
+
+Aunque estos brazaletes han logrado avances sorprendentes, también se enfrentaron a desafíos. Durante una prueba en un maratón, tuvieron problemas con puentes metálicos y las señales de teléfono de mucha gente, y cuando empezó a llover, los brazaletes dejaron de enviar señales.
+
+A pesar de estos problemas, estos brazaletes representan un gran paso adelante. Están haciendo que la tecnología y las personas trabajen juntas de una manera nueva y emocionante para ayudar a aquellos con problemas de visión. Es un recordatorio de que, aunque tengamos desafíos, la tecnología puede hacer cosas increíbles para mejorar la vida de las personas.
+
+En la actualidad, la inteligencia artificial (IA) se ha consolidado como una herramienta poderosa en el ámbito del reconocimiento facial, transformando la manera en que interactuamos con la tecnología. Este fenómeno, destacado en el video, se manifiesta de manera prominente en el desbloqueo facial de nuestros teléfonos celulares, donde la IA utiliza una base de datos previa para identificar y reconocer nuestras características faciales únicas.
+
+Sin embargo, este avance tecnológico plantea cuestionamientos significativos sobre la privacidad, sugiriendo que en un futuro cercano esta podría ser prácticamente inexistente. Se señala que los gobiernos, cada vez más, emplean sistemas de reconocimiento facial para recopilar información sobre los ciudadanos, generando un debate sobre los límites éticos de esta práctica.
+
+El video también resalta casos específicos de aplicación de la tecnología de reconocimiento facial en distintas partes del mundo, como en Israel, donde se utiliza para detectar posibles delincuentes a través de imágenes faciales, o en Estados Unidos con el desarrollo del "Gaydar", un sistema diseñado para identificar la orientación sexual de una persona.
+
+En la búsqueda de descubrimientos más trascendentales, el video introduce a Watson for Drug Discovery, un sistema de inteligencia artificial que revoluciona el ámbito médico. Este sistema se embarca en la tarea monumental de leer millones de artículos científicos anuales relacionados con diversas enfermedades, superando ampliamente la capacidad humana de comprender esta vasta información. Un ejemplo práctico de su aplicación se presenta en la investigación sobre medicamentos para el Parkinson.
+
+Watson, en un tiempo asombroso de 15 minutos, analizó más de 28 millones de informes médicos relacionados con el Parkinson, estableciendo conexiones con 3848 fármacos que podrían ser beneficiosos en el tratamiento de la enfermedad. La generación de una lista ordenada reveló tanto fármacos conocidos como opciones que no habían sido consideradas previamente. Este enfoque pionero destaca la capacidad de la inteligencia artificial para acelerar el descubrimiento de tratamientos médicos, ofreciendo nuevas perspectivas y posibilidades que podrían pasar desapercibidas para la investigación humana convencional.
+
+La idea de tener una mente que pueda hacer muchas cosas en muchos lugares diferentes es algo especial que los humanos tenemos. Pero, aunque las computadoras han avanzado mucho, todavía no hay ninguna que sea tan inteligente como nosotros en todo. Algo curioso que se plantea es que tal vez, en el futuro, otras inteligencias artificiales puedan crear máquinas tan inteligentes como nosotros. Esto nos hace pensar en cómo la inteligencia artificial podría afectar nuestro mundo.
+
+En el video, nos hablan de uno de los miedos más grandes sobre la inteligencia artificial: que las máquinas se vuelvan en contra de los humanos, como hemos visto en muchas películas. Sin embargo, plantean una idea diferente. Dicen que el verdadero problema no es que las máquinas se revelen contra nosotros, sino que en algún momento tengamos metas y objetivos diferentes. Usan el ejemplo de un hormiguero: si decidimos construir una carretera que pase por el hormiguero, nuestro objetivo final sería quitar el hormiguero, no porque seamos enemigos de las hormigas, sino porque no compartimos los mismos objetivos. Por eso, dicen que es crucial asegurarnos de que la inteligencia artificial comparta nuestros objetivos para evitar problemas en el futuro.
+
+En este punto, nos hacen pensar en cómo la inteligencia artificial podría cambiar nuestra sociedad. Más allá de las mejoras tecnológicas, nos dicen que es importante establecer reglas y valores éticos que guíen el desarrollo y uso de la inteligencia artificial. Destacan que es necesario que las máquinas y los humanos trabajen juntos de manera positiva y compartan metas para evitar problemas y asegurar que la inteligencia artificial sea beneficiosa para todos.
+
 # Introducción a la Inteligencia Artificial: Tipos de Inteligencia.
 
 ## Escribir un ensayo mínimo de 4 cuartillas de la teoría de las inteligencias múltiples según Gardner
@@ -71,6 +142,16 @@ Pensar en la IA a gran escala plantea preguntas importantes sobre cómo cambiar�
 # Introducción a la Inteligencia Artificial: Introspección
 
 ## Problema de los ocho alfiles
+La solucion de los 8 alfiles se logro en 18 movimientos, despues de varios intentos y errores, se logro llegar a la solucion, la cual se muestra a continuacion:
+![8](8A.jpg)
+
+El principal movimiento que se realizo para llegar a la solucion fue hacer un tipo movimiento espejo, es decir si se movia un alfil en una posicion, se hacia el mismo movimiento pero en la posicion del afil contrario, esto se hizo para que los alfiles se fueran moviendo de manera simetrica, y asi poder llegar a la solucion.
+
+Como se puede observar en la imagen anterior la mayoria de movimientos se realizan cerca de la zona central, asi ue fue necesario prestar mucha atencion con los alfiles que se quedaban en la orillas, ya que estos eran los que mas se tardaban en llegar a la posicion final.
+
+En cierto punto de la solucion se puede observar como ya habia la mitad de los alfiles en su posicion final, pero la otra mitad se encontraban en la orilla, por lo que fue necesario moverlos de manera que se fueran acercando a la zona central, y asi poder llegar a la solucion.
+
+Apartir de aqui desde mi punto de fue la parte mas compleja del ejercicio por que ahora se tenia que verficar tanto de arriba como de abajo que no se fueran a eliminar.
 
 # Introducción a la Inteligencia Artificial: Introspección
 
@@ -286,6 +367,18 @@ cv.destroyAllWindows()
 
 ## Dado el siguiente problema hacer el planteamiento matemático y programar el siguiente problema
 
+El problema que se plantea es que dado un numero de personas se toma en cuenta que la persona en la posicion x elimina a la x + 1 empezando con la persona 1, hasta que se llega al final de la lista de personas y se vuelve a repetir el proceso hasta que solo quede una persona en la lista.
+
+Si la cantidad de personas es 1, ese seria el ganador.
+Si la cantidad de personas es 2, el 1 elimina al 2 y el 1 es el ganador.
+Si la cantidad de personas es 3, el 1 elimina al 2, el 3 elimina al 1 y el 3 es el ganador.
+Si la cantidad de personas es 4, el 1 elimina al 2, el 3 elimina al 4, el 1 elimina al 3 y el 1 es el ganador.
+Si la cantidad de personas es 5, el 1 elimina al 2, el 3 elimina al 4, el 5 elimina al 1, el 3 elimina al 5 y el 3 es el ganador.
+
+Con esto se puede observar algo interesante y es que si el numero de personas es una potencia de 2, el ganador es el numero 1, pero si el numero de personas no es una potencia de 2, el ganador es el numero que sigue a la potencia de 2 mas cercana, lo voy a poner en una tabla para verlo mas claro.
+
+El algoritmo que se utilizo para resolver el problema fue el siguiente:
+
 ```python
 def josephus(n, k):
     people = list(range(1, n + 1))
@@ -307,6 +400,21 @@ print(f"La última persona en pie en un círculo de {n} personas con un paso de 
 # Introducción a la Inteligencia Artificial: El papel de la heurística
 
 ## Definir que es la heurística y cual es su papel en la resolución de problemas
+
+
+La heurística es un enfoque o método de resolución de problemas que se basa en reglas generales o "atajos mentales" que simplifican la toma de decisiones y la resolución de problemas. En lugar de seguir un enfoque sistemático y exhaustivo, como lo haría un algoritmo más completo, la heurística busca soluciones rápidas y eficientes, aunque no garantiza necesariamente la mejor solución.
+
+El papel de la heurística en la resolución de problemas es facilitar el proceso cognitivo al proporcionar estrategias simplificadas y prácticas. Las heurísticas son especialmente útiles cuando enfrentamos problemas complejos y no contamos con el tiempo o los recursos para analizar exhaustivamente todas las opciones.
+
+Algunos ejemplos comunes de heurísticas incluyen:
+
+1. Heurística de representatividad: Juzgar la probabilidad de que algo pertenezca a una categoría en función de cuánto se parece a un prototipo común.
+
+2. Heurística de disponibilidad: Basarse en la facilidad con la que se pueden recordar ejemplos específicos para evaluar la probabilidad de eventos futuros.
+
+3. Heurística de anclaje y ajuste: Utilizar un valor inicial (ancla) y ajustarlo en función de la información disponible, a menudo subestimando el impacto de los ajustes.
+
+4. Heurística de reconocimiento de patrones: Buscar patrones familiares o soluciones que hayan funcionado en el pasado.
 
 ## Resolver con recursividad, programar.
 
@@ -364,7 +472,9 @@ resolver_laberinto(matriz)
 # Reglas y Búsquedas : Espacio de Estados
 
 ## Generar el espacio de estados de los siguientes problemas
+
 ### Ranas
+
 El juego consiste en pasar las 3 ranas verdes a la derecha y las 3 ranas marrones a la izquierda. Las ranas pueden saltar a una piedra vacía que tengan delante, o saltar por encima de otra rana si en medio de ambas hay una piedra vacía. Pulsa sobre la rana que quieres que salte.
 
 Estado Inicial: MMM_VVV
@@ -376,10 +486,10 @@ Estado Final: VVV_MMM
 4. MMVMV_V
 5. MMV_VMV
 6. M_VMVMV
-7. _MVMVMV
+7. \_MVMVMV
 8. VM_MVMV
 9. VMVM_MV
-10. VMVMVM_
+10. VMVMVM\_
 11. VMVMV_M
 12. VMV_VMM
 13. V_VMVMM
@@ -388,6 +498,7 @@ Estado Final: VVV_MMM
 16. VVV_MMM
 
 ### Misioneros y Canivales
+
 Tres misioneros se perdieron explorando una jungla. Separados de sus compañeros, sin alimento y sin radio, solo sabían que para llegar a su des tino debían ir siempre hacia adelante. Los tres misioneros se detuvieron frente a un río que les bloqueaba el paso, preguntándose que podían hacer. De repente, aparecieron tres caníbales llevando un bote, pues también el los querían cruzar el río. Ya anteriormente se habían encontrado grupos de misioneros y caníbales, y cada uno respetaba a los otros, pero sin confiar en ellos. Los caníbales se daban un festín con los misioneros cuando les superaban en número. Los tres caníbales deseaban ayudar a los misioneros a cruzar el río, pero su bote no podía llevar más de dos personas a la vez y los misioneros no querían que los caníbales les superaran en número. ¿Cómo puede resolverse el problema, sin que en ningún momento haya más caníbales que misioneros en cualquier orilla del río? recuerda que un misionero y un caníbal en una orilla del río más uno o dos caníbales en el bote al mismo lado, significa que los misioneros tendrán problemas.
 
 Estado Inicial: [CCC,MMM][]
@@ -408,6 +519,7 @@ Estado Final: [][CCC,MMM]
 # Generación de Dataset
 
 ## Generar un dataset de rostros por lo menos 5 diferentes
+
 Este es el código que se utilizó para la generación del dataset, dependiendo de si presionaba la tecla a se toma una imagen positiva que se guarda en la carpeta p, si se presiona la tecla s se toma una imagen negativa y se guarda en la carpeta n
 
 ```python
@@ -423,19 +535,19 @@ while True:
 
     frame =cv.rectangle(frame, (100, 100), (400, 400), (0, 255, 0), 3)
     frame2= frame[100:400, 100:400]
-    
+
     cv.imshow('frame', frame)
     cv.imshow('dataset', frame2)
 
 
-    k = cv.waitKey(1) 
+    k = cv.waitKey(1)
     if k == ord('a'):
         i=i+1
         cv.imwrite('./dataset/p/Rostros'+str(i)+'.jpg', frame2)
     if k == ord('s'):
         i=i+1
         cv.imwrite('./dataset/n/NoRostros'+str(i)+'.jpg', frame2)
-        
+
 
     if k == ord('q'):
         break
@@ -446,9 +558,10 @@ cv.destroyAllWindows()
 
 ```
 
-
 # Proyectos Final
+
 ## Juego Phaser
+
 El juego consiste en un jugador que debe de esquivar las balas tanto en vertical como horizontal, la bala vertical tiene una velocidad variable, mientras que la bala horizontal tiene una velocidad constante, ya que yo utilice la gravedad del juego como su velocidad, dentro de la gran cantidad de código y condiciones que existen creo que es importante explicar algunos detalles, mi red neuronal tiene 4 entradas que son:
 
 1. La distancia en X de la bala1 y del jugador
@@ -744,17 +857,19 @@ function velocidadRandom(min, max) {
 }
 
 function render() {}
-
 ```
 
 ## HaarCascade CubreBocas
+
 El proyecto consiste en un detector de rostros con cubrebocas y si hay un rostro sin cubrebocas que no lo reconozca, la herramienta que se utilizó para el entrenamiento fue el Cascade Trainer GUI, las imágenes tenían un tamaño de 120 x 120 y estaban en escala de grises y las configuraciones utilizadas en el Cascade Trainer GUI fueron las siguientes:
 
 ### Input
+
 1. Carpeta p (imagenes positivas): 90 %
 2. Carpeta n (imagenes negativas): 4255
 
 ### Common
+
 1. Number of Stages: 20
 2. Pre-calculated Values Buffer Size: 4096
 3. Pre-calculated Indices Buffer Size: 4096
@@ -762,6 +877,7 @@ El proyecto consiste en un detector de rostros con cubrebocas y si hay un rostro
 5. Acceptance Ratio Break Value: -1.00
 
 ## Cascade
+
 1. Sample Width: 24
 2. Sample Height: 24
 3. Feature Type: Haar
@@ -794,7 +910,7 @@ while True:
     if not ret:
         print("No se puede")
         break
-    
+
     cv.imshow('rostros', frame)
 
     if cv.waitKey(1) == ord('q'):
@@ -805,7 +921,6 @@ cv.destroyAllWindows()
 ```
 
 En primer lugar se carga el xml del cascade, después se abre la cámara del dispositivo y se empieza a leer cada frame, después se convierte a escala de grises y se detectan los rostros con el cascade, después se dibuja un rectángulo en cada rostro detectado y finalmente se muestra el frame con los rectángulos, el resultado fue el siguiente, de esta forma es como funciona el código, si hay un rostro con cubrebocas lo detecta y si no no lo detecta.
-
 
 ## CNN Flores
 
@@ -838,7 +953,7 @@ Val-Accuracy: 0.9401
 
 Como punto final a obsevar una vez finalizado el entrenamiento se guarda en un archivo llamado prueba4.h5py el cual se puede utilizar para hacer predicciones, el codigo utilizado para el entrenamiento fue el siguiente:
 
-```python 
+```python
 
 import numpy as np
 import os
@@ -859,7 +974,7 @@ from tensorflow.keras.layers import (
 from keras.layers import LeakyReLU
 
 dirname = os.path.join(os.getcwd(),'.\dataset3')
-imgpath = dirname + os.sep 
+imgpath = dirname + os.sep
 
 images = []
 directories = []
@@ -876,7 +991,7 @@ for root, dirnames, filenames in os.walk(imgpath):
             filepath = os.path.join(root, filename)
             image = plt.imread(filepath)
             if(len(image.shape)==3):
-                
+
                 images.append(image)
             b = "Leyendo..." + str(cant)
             print (b, end="\r")
@@ -911,7 +1026,7 @@ for directorio in directories:
     indice=indice+1
 
 y = np.array(labels)
-X = np.array(images, dtype=np.uint8) 
+X = np.array(images, dtype=np.uint8)
 
 classes = np.unique(y)
 nClasses = len(classes)
@@ -948,9 +1063,9 @@ train_X,valid_X,train_label,valid_label = train_test_split(train_X, train_Y_one_
 print(train_X.shape,valid_X.shape,train_label.shape,valid_label.shape)
 
 #declaramos variables con los parámetros de configuración de la red
-INIT_LR = 1e-3 
-epochs = 20 
-batch_size = 32 
+INIT_LR = 1e-3
+epochs = 20
+batch_size = 32
 
 sport_model = Sequential()
 sport_model.add(Conv2D(32, kernel_size=(3, 3),activation='linear',padding='same',input_shape=(50,50,3)))
@@ -1048,12 +1163,12 @@ def flowerCase(numLabel):
         return "Error"
 
 # Cargar el modelo
-modelo = keras.models.load_model('./prueba4.h5py') 
-  
-imagen_ruta = './ImagenesTest/sunf.jpeg'  
+modelo = keras.models.load_model('./prueba4.h5py')
+
+imagen_ruta = './ImagenesTest/sunf.jpeg'
 imagen = Image.open(imagen_ruta)
-imagen = imagen.resize((50, 50))  
-imagen_array = np.array(imagen) / 255.0 
+imagen = imagen.resize((50, 50))
+imagen_array = np.array(imagen) / 255.0
 
 # Añadir una dimensión para batch
 imagen_array = np.expand_dims(imagen_array, axis=0)
