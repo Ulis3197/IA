@@ -139,12 +139,32 @@ En este punto, nos hacen pensar en cómo la inteligencia artificial podría camb
 
 ## Escribir un ensayo mínimo de 4 cuartillas de la teoría de las inteligencias múltiples según Gardner
 
+La teoría de las inteligencias múltiples propuesta por Howard Gardner desafía la noción convencional de la inteligencia como una entidad única y estática. Según Gardner, los seres humanos no están limitados a una única forma de inteligencia, sino que poseen una diversidad de capacidades y potenciales, denominados como "inteligencias múltiples".
+
+Clasificación de las inteligencias múltiples con las siguientes:
+
+1. Inteligencia lingüística: La capacidad de dominar el lenguaje y poder comunicarnos con los demás es transversal a todas las culturas. Desde pequeños aprendemos a usar el idioma materno para podernos comunicar de manera eficaz.
+2. Inteligencia lógico-matemática: Este tipo de inteligencia se vincula a la capacidad para el razonamiento lógico y la resolución de problemas matemáticos. La rapidez para solucionar este tipo de problemas es el indicador que determina cuánta inteligencia lógico-matemática se tiene.
+3. Inteligencia espacial: Es la habilidad que nos permite observar el mundo y los objetos desde diferentes perspectivas. En esta inteligencia destacan los ajedrecistas y los profesionales de las artes visuales
+4. Inteligencia musical: Es la habilidad para la música, incluyendo la capacidad de reconocer tonos, ritmos y patrones musicales. Esta inteligencia se manifiesta en la composición, interpretación y apreciación musical.
+5. Inteligencia corporal y cinestésica: Es la que trata sobre el control del propio cuerpo y la manipulación de objetos. Las personas con esta inteligencia suelen destacar en actividades físicas.
+6. Inteligencia intrapersonal: Es aquella que comprende la conciencia y comprensión de uno mismo. Las personas con esta inteligencia tienen un fuerte sentido de autoconciencia y capacidad para comprender sus propias emociones, metas y motivaciones
+7. Inteligencia interpersonal: Es la habilidad para comprender y relacionarse efectivamente con los demás. Esta inteligencia se manifiesta en la empatía, la capacidad para trabajar en grupo y la comunicación efectiva.
+8. Inteligencia naturalista: Se presenta en aquello con sensibilidad y capacidad para entender el mundo natural, incluyendo la capacidad de reconocer y clasificar las formas y patrones presentes en la naturaleza.
+
+Lo distintivo de la teoría de Gardner radica en la idea de que estas inteligencias no operan de manera aislada, sino que pueden ser empleadas de diversas maneras productivas, ya sea de manera conjunta o por separado. Este enfoque implica un cambio fundamental en la percepción de la inteligencia, pasando de una visión unidimensional a una perspectiva más holística y diversa.
+
+La posibilidad de desplegar estas inteligencias con flexibilidad y eficacia es uno de los aspectos centrales de la propuesta de Gardner. Al reconocer y comprender las distintas capacidades que poseemos, podemos adaptarnos de manera más eficiente a las demandas cambiantes de nuestro entorno. La flexibilidad en el uso de estas inteligencias no solo se traduce en un mejor rendimiento individual, sino que también contribuye a la riqueza y dinámica de la sociedad.
+
+El conocimiento de las múltiples inteligencias no solo ofrece una visión más completa de la mente humana, sino que también proporciona una herramienta invaluable para el desempeño en diversas funciones sociales. Cada sociedad define roles y funciones específicos, y el entendimiento de las inteligencias múltiples permite a los individuos adaptarse y contribuir de manera significativa a estas expectativas.
+
+Este enfoque innovador hacia la inteligencia tiene profundas implicaciones en el ámbito educativo, laboral y social. En la educación, aboga por enfoques pedagógicos que reconozcan y fomenten todas las formas de inteligencia, alejándose de evaluaciones tradicionales que pueden no capturar la diversidad de las capacidades de los estudiantes. En el ámbito laboral, promueve entornos que valoren y utilicen las habilidades únicas de cada individuo, fomentando así la colaboración y la eficiencia.
+
 # Introducción a la Inteligencia Artificial: Introspección
 
 ## Problema de los ocho alfiles
+
 La solucion de los 8 alfiles se logro en 18 movimientos, despues de varios intentos y errores, se logro llegar a la solucion, la cual se muestra a continuacion:
-
-
 
 ![8](8A.jpg)
 
@@ -404,7 +424,6 @@ print(f"La última persona en pie en un círculo de {n} personas con un paso de 
 
 ## Definir que es la heurística y cual es su papel en la resolución de problemas
 
-
 La heurística es un enfoque o método de resolución de problemas que se basa en reglas generales o "atajos mentales" que simplifican la toma de decisiones y la resolución de problemas. En lugar de seguir un enfoque sistemático y exhaustivo, como lo haría un algoritmo más completo, la heurística busca soluciones rápidas y eficientes, aunque no garantiza necesariamente la mejor solución.
 
 El papel de la heurística en la resolución de problemas es facilitar el proceso cognitivo al proporcionar estrategias simplificadas y prácticas. Las heurísticas son especialmente útiles cuando enfrentamos problemas complejos y no contamos con el tiempo o los recursos para analizar exhaustivamente todas las opciones.
@@ -472,6 +491,131 @@ resolver_laberinto(matriz)
 
 ## Proponer Algoritmo de Solución, programar.
 
+```python
+
+import math
+import heapq
+
+LIBRE = 0
+INICIO = 2
+DESTINO = 3
+BLOQUEADA = 1
+
+DIRECCIONES = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+
+class Nodo:
+    def __init__(self, fila, columna):
+        self.fila = fila
+        self.columna = columna
+        self.f = math.inf
+        self.g = math.inf
+        self.padre = None
+
+def es_valida(fila, columna, filas, columnas):
+    return 0 <= fila < filas and 0 <= columna < columnas
+
+def no_bloqueada(grid, fila, columna):
+    return grid[fila][columna] != BLOQUEADA
+
+def calcular_valor_h(nodo, destino):
+    return math.sqrt((nodo.fila - destino[0]) ** 2 + (nodo.columna - destino[1]) ** 2)
+
+def reconstruir_camino(nodo_destino):
+    camino = []
+    while nodo_destino:
+        camino.append((nodo_destino.fila, nodo_destino.columna))
+        nodo_destino = nodo_destino.padre
+    camino.reverse()
+    print("\nEl camino es:", end=" ")
+    for p in camino:
+        print(f"-> {p}", end=" ")
+
+def busqueda_a_estrella(grid, inicio, destino):
+    filas = len(grid)
+    columnas = len(grid[0])
+
+    if not es_valida(inicio[0], inicio[1], filas, columnas) or not es_valida(destino[0], destino[1], filas, columnas) or not no_bloqueada(grid, inicio[0], inicio[1]) or not no_bloqueada(grid, destino[0], destino[1]):
+        print("Inicio o destino inválido o bloqueado")
+        return
+
+    if inicio == destino:
+        print("Ya estamos en el destino")
+        return
+
+    lista_cerrada = [[False] * columnas for _ in range(filas)]
+    nodos = [[Nodo(i, j) for j in range(columnas)] for i in range(filas)]
+
+    i, j = inicio
+    nodos[i][j].f = 0.0
+    nodos[i][j].g = 0.0
+
+    lista_abierta = [(0.0, nodos[i][j])]
+
+    destino_encontrado = False
+
+    while lista_abierta:
+        _, nodo_actual = heapq.heappop(lista_abierta)
+
+        i, j = nodo_actual.fila, nodo_actual.columna
+        lista_cerrada[i][j] = True
+
+        for direccion in DIRECCIONES:
+            fila_s, columna_s = i + direccion[0], j + direccion[1]
+
+            if es_valida(fila_s, columna_s, filas, columnas) and not lista_cerrada[fila_s][columna_s] and no_bloqueada(grid, fila_s, columna_s):
+                sucesor = nodos[fila_s][columna_s]
+
+                if sucesor == nodos[destino[0]][destino[1]]:
+                    sucesor.padre = nodo_actual
+                    print("Nodo destino encontrado")
+                    reconstruir_camino(sucesor)
+                    destino_encontrado = True
+                    return
+
+                g_nuevo = nodo_actual.g + 1.0
+                f_nuevo = g_nuevo + calcular_valor_h(sucesor, destino)
+
+                if sucesor.f == math.inf or sucesor.f > f_nuevo:
+                    sucesor.f = f_nuevo
+                    sucesor.g = g_nuevo
+                    sucesor.padre = nodo_actual
+
+                    heapq.heappush(lista_abierta, (f_nuevo, sucesor))
+
+    if not destino_encontrado:
+        print("No se pudo encontrar el nodo destino")
+
+def main():
+    inicio = None
+    destino = None
+
+    for i, fila in enumerate(matriz):
+        for j, celda in enumerate(fila):
+            if celda == INICIO:
+                inicio = [i, j]
+            elif celda == DESTINO:
+                destino = [i, j]
+
+    busqueda_a_estrella(matriz, inicio, destino)
+
+if __name__ == "__main__":
+    main()
+
+```
+
+El codigo consiste en lo siguiente:
+Primero se definen algunas constantes para indicar que significa cada valor en mi matriz del laberito, por ejemplo el 0 significacamino libre, el 1 significa camino bloqueado, el 2 significa el inicio y el 3 significa el destino. Luego estan las direcciones que se pueden tomar a partir de un punto, en este caso solo se pueden mover hacia arriba, abajo, izquierda y derecha.
+
+Luego esta la clase Nodo que se utiliza para guardar la fila y columna de cada nodo, ademas de su valor f y g, y su padre.Entonces en cada nodo se guardan esos valores y son los que se utilizan para el A\*.
+
+Tambien se definen algunas funciones que se utilizan para verificar si una posicion es valida, si no esta bloqueada, y para calcular el valor h que es la distancia entre el nodo actual y el destino.
+
+En la funcion reconstruir_camino se va guardando el camino que se va tomando para llegar al destino, y al final se imprime el camino. Esto se hace a partir del nodo destino, se va recorriendo a traves de su padre hasta llegar al nodo inicio.
+
+Y finalmente el metodo de busqueda_a_estrella que es el que se encarga de hacer la busqueda del camino, primero crea un nodo para cada celda en la matriz que le doy, despues se agregar el nodo a lista abierta, una vez terminado esto se realizan iteraciones sobre la lista abierta y se termina cuando ya no hay mas nodos en la lista abierta, o cuando se encuentra el destino. Dentro del ciclo se exploran los vecinos del nodo actual y se calculan costos, en caso de que se encuentre el destino lo que hace es llamar a la funcion reconstruir_camino y termina la ejecucion.
+
+La funcion main solo sirve encontrar el inicio y el objetivo de la matriz y llamar a la funcion de busqueda_a_estrella.
+
 # Reglas y Búsquedas : Espacio de Estados
 
 ## Generar el espacio de estados de los siguientes problemas
@@ -489,10 +633,10 @@ Estado Final: VVV_MMM
 4. MMVMV_V
 5. MMV_VMV
 6. M_VMVMV
-7. \_MVMVMV
+7. _MVMVMV
 8. VM_MVMV
 9. VMVM_MV
-10. VMVMVM\_
+10. VMVMVM_
 11. VMVMV_M
 12. VMV_VMM
 13. V_VMVMM
