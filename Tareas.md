@@ -1329,6 +1329,7 @@ flower = flowerCase(etiqueta_predicha)
 print(f'Etiqueta predicha: {flower}')
 
 # Puedes mostrar la imagen si lo deseas
+a
 plt.imshow(imagen)
 plt.show()
 
